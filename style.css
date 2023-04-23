@@ -12,12 +12,78 @@ body {
 }
 
 .container {
-    width: 50%;
-    height: 50%;
+    width: 35%;
+    height: 70vh;
     background-color: aliceblue;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 10px;
     box-shadow: 0 5px 30px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Form */
+form {
+    width: 50%;
+}
+
+.form-group{
+    height:65px;
+}
+
+label {
+    position: relative;
+    bottom: 3px;
+}
+
+input {
+    width: 100%;
+    height: 34px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.3s;
+}
+
+input:valid {
+    border: 1px solid green;
+}
+
+input:invalid {
+    border: 1px solid red;
+}
+
+button{
+    cursor: pointer;
+    color: antiquewhite;
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    height: 6vh;
+    width: 100%;
+    font-family: Karla;
+    font-size: 20x;
+    letter-spacing: 2px;
+    margin-top: 5px;
+}
+
+button:hover{
+    filter: brightness(200%);
+    background: rgb(25, 25, 25);
+}
+
+button:focus{
+    outline: none;
+}
+
+.message-container{
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 90%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    color: black;
 }
