@@ -5,6 +5,7 @@ const messageContainer = document.querySelector('.message-container');
 const message = document.getElementById('message');
 
 let isValid = false;
+let passwordsMatch = false;
 
 function validateForm() {
     //Using Constraint API
@@ -12,15 +13,54 @@ function validateForm() {
     // console.log(isValid);
     
     //Style main error message
-    message.textContent = 'Please fill out all fields.';
-    message.style.color = 'red';
-    messageContainer.style.borderColor = 'red';
+    if(!isValid) {
+        message.textContent = 'Please fill out all fields.';
+        message.style.color = 'red';
+        messageContainer.style.borderColor = 'red';
+        return;
+    }
+    // Check passwords
+    if(password1El.value === password2El.value) {
+        passwordsMatch = true;
+        password1El.style.borderColor = 'green';
+        password2El.style.borderColor = 'green';
+    } else {
+        passwordsMatch = false;
+        message.textContent = 'Make sure passwords match.';
+        message.style.color = 'red';
+        messageContainer.style.borderColor = 'red';
+        password1El.style.borderColor = 'red';
+        password2El.style.borderColor = 'red';
+        return;
+    }
+    //if form is valid and passwords match
+    if(isValid && passwordsMatch) {
+        message.textContent = 'Successfully Registered!';
+        message.style.color = 'green';
+        messageContainer.style.borderColor = 'green';
+    }
+}
+
+function storeFormData() {
+    const user = {
+        name: form.name.value,
+        phone: form.phone.value,
+        email: form.email.value,
+        website: form.website.value,
+        password: form.password.value
+    };
+    // Do something
+    console.log(user);
 }
 
 function processFormData(e){
     e.preventDefault();
     // console.log(e);
     validateForm();
+    //Submit if valid
+    if(isValid && passwordsMatch) {
+        storeFormData();
+    }
 }
 
 //Event Listener
